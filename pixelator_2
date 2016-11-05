@@ -1,0 +1,23 @@
+#! /bin/bash
+
+main(){
+	# 1. defines
+	input=$1
+	input_file=`basename $input`
+	clean_name="${input_file%.*}"
+
+convert -scale 10% -scale 1000% $input_file pixelated1.png
+convert -scale 10% -scale 1000% pixelated1.png pixelated2.png
+convert -scale 10% -scale 1000% pixelated2.png pixelated3.png
+convert -scale 10% -scale 1000% pixelated3.png pixelated4.png
+convert -scale 10% -scale 1000% pixelated4 "$clean_name"_"pixelated".png
+
+rm -rf pixelated1.png
+rm -rf pixelated2.png
+rm -rf pixelated3.png
+rm -rf pixelated4.png
+
+}
+
+retry=0
+main $1
