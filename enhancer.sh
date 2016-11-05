@@ -15,6 +15,8 @@ main(){
 
 --no-interface --no-data --no-fonts --batch commands
 
+gimp --batch (gimp-file-save RUN-NONINTERACTIVEimage drawable filename filename)(gimp-image-delete image))(set! filelist (cdr filelist)))))
+
 }
 
 retry=0
