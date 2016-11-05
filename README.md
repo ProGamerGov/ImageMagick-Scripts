@@ -3,6 +3,8 @@
 
 Usage: 
 
-./pixelator.sh image_name
+'./pixelator.sh image_name scale_value'
 
-./greyscale.sh image_name
+A scale value of 10 is recommended
+
+'./greyscale.sh image_name'
