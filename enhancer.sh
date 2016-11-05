@@ -11,7 +11,9 @@ main(){
 	scale=$2
 
 
-convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
+#convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
+
+--no-interface --no-data --batch commands
 
 }
 
