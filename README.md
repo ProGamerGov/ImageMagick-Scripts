@@ -3,4 +3,4 @@
 
 Usage: 
 
-./pixelator.sh <image_name> 
+./pixelator.sh image_name
