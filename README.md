@@ -2,7 +2,7 @@
 
 ---
 
-Usage: 
+#Usage: 
 
 ---
 
@@ -14,7 +14,7 @@ A scale value of 10 is recommended for the scale value
 
 ---
 
-If you recieve a permission error, try: 
+#If you recieve a permission error, try: 
 
 ---
 
