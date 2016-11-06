@@ -15,6 +15,8 @@ main(){
 	# 2. First scale value
 	zoom=$2
 	
+	rotation_value=$3
+	
 	width=`convert $input_file -format "%w" info:`
 	height=`convert $input_file -format "%h" info:`
 
@@ -22,7 +24,7 @@ widthcrop=`echo $width $zoom | awk '{print $1-$2}'`
 heightcrop=`echo $height $zoom | awk '{print $1-$2}'`
 
 
-convert -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$clean_name""_zoom_""$zoom".png
+convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$clean_name""_zoom_""$zoom".png
 
 #convert -scale "$scale""%" -scale 1000% -resize "$width"x"$height" $input_file "$clean_name"_"pixelated_""scale_""$scale".png
 #convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
@@ -31,4 +33,4 @@ convert -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$clean
 }
 
 retry=0
-main $1 $2
+main $1 $2 $3
