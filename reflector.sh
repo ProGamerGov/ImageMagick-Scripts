@@ -12,13 +12,10 @@ main(){
 
 
 #convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
- 
-convert -quiet "$infile" $dir/tmpI.mpc
-fact=`convert xc: -format "%[fx:$amount/100]" info:`
-convert $dir/tmpI.mpc \
-\( +clone -fill $color -colorize 100% \) \
-\( -clone 0 -modulate 100,0,100 -solarize 50% -level 0x50% -evaluate multiply $fact \) \
--compose overlay -composite "$outfile"
+ convert $input_file
+		\( +clone -fill $color -colorize 100% \) \
+		\( -clone 0 -modulate 100,0,100 -white-threshold ${highthresh}% -level 0x${highthresh}% -evaluate multiply $fact \) \
+		-compose overlay -composite "$outfile"
 
 }
 
