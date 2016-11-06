@@ -1,9 +1,11 @@
 #! /bin/bash
 
 # Check for output directory, and create it if missing
-if [ ! -d "$output" ]; then
-  mkdir output
-fi
+#if [ ! -d "$output" ]; then
+#  mkdir output
+#fi
+
+#./neural-zoom.sh 92fXY3q.jpg 92fXY3q.jpg 75 0 1
 
 main(){
 	# 1. input image
