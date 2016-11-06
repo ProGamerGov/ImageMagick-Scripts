@@ -5,7 +5,7 @@
 #  mkdir output
 #fi
 
-#./neural-zoom.sh 92fXY3q.jpg 92fXY3q.jpg 75 0 1
+##./neural-zoom.sh 92fXY3q.jpg 92fXY3q.jpg 75 75 1 1 
 
 main(){
 	# 1. input image
