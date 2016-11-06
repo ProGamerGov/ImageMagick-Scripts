@@ -13,9 +13,9 @@ main(){
 
 
 	# 2. First scale value
-	zoom=$2
+	zoom=$4
 	
-	rotation_value=$3
+	rotation_value=$5
 	
 	width=`convert $input_file -format "%w" info:`
 	height=`convert $input_file -format "%h" info:`
@@ -33,4 +33,21 @@ convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"
 }
 
 retry=0
-main $1 $2 $3
+
+neural_style(){
+	echo "Neural Style Transfering "$1
+	if [ ! -s $3 ]; then
+		th neural_style.lua -content_image $1 -style_image $2 -output_image $3 \
+				-image_size 1000 -print_iter 100 -backend cudnn -gpu 0 -save_iter 0 \
+				-style_weight 20 -num_iterations 10 
+				#-original_colors 1
+				#Change the command including "th neural_style.lua" to use other neural network systems.
+	fi
+	if [ ! -s $3 ] && [ $retry -lt 3 ] ;then
+			echo "Transfer Failed, Retrying for $retry time(s)"
+			retry=`echo 1 $retry | awk '{print $1+$2}'`
+			neural_style $1 $2 $3
+	fi
+	retry=0
+}
+main $1 $2 $3 $4 $5
