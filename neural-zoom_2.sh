@@ -37,7 +37,7 @@ widthcrop=`echo $width $zoom | awk '{print $1-$2}'`
 heightcrop=`echo $height $zoom | awk '{print $1-$2}'`
 
 
-convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$clean_name""_zoom_""$zoom""_rotation_degrees_""$rotation_value".png
+convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$num_frames"_"""$clean_name""_zoom_""$zoom""_rotation_degrees_""$rotation_value".png
 
 #convert -scale "$scale""%" -scale 1000% -resize "$width"x"$height" $input_file "$clean_name"_"pixelated_""scale_""$scale".png
 #convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
