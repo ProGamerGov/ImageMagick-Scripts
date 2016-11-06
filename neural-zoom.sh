@@ -17,12 +17,15 @@ main(){
 	# 2. The amount of zoom
 	zoom=$4
   
-  #The number of frames per second
-  frames=$5
-  
-  
+ 	 #The number of frames per second
+  	frames=$5
+	
+	
+	width=`convert $input_file -format "%w" info:`
+	height=`convert $input_file -format "%h" info:`
 
-
+  
+ 
 
 }
 
