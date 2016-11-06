@@ -18,10 +18,15 @@ main(){
 	style_name="${style_file%.*}"
 	
 
-	# 2. First scale value
+	# 4. Zoom value
 	zoom=$4
 	
+	#5. Rotation value
 	rotation_value=$5
+	
+	#6. Number of frames
+	
+	num_frames=$6
 	
 	width=`convert $input_file -format "%w" info:`
 	height=`convert $input_file -format "%h" info:`
@@ -55,4 +60,4 @@ neural_style(){
 	fi
 	retry=0
 }
-main $1 $2 $3 $4 $5
+main $1 $2 $3 $4 $5 $6
