@@ -10,7 +10,7 @@ main(){
 	# 2. First scale value
 	scale=$2
 	
-	width=`convert $intput_file -format "%w" info:`
+	width=`convert $input_file -format "%w" info:`
 	height=`convert $input_file -format "%h" info:`
 
 convert -scale "$scale""%" -scale 1000% -resize "$width"x"$height" $input_file "$clean_name"_"pixelated_""scale_""$scale".png
