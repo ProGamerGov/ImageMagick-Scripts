@@ -10,7 +10,13 @@ main(){
 	input=$1
 	input_file=`basename $input`
 	clean_name="${input_file%.*}"
-
+	
+	# 2. Style image
+	style=$2
+	style_dir=`dirname $style`
+	style_file=`basename $style`
+	style_name="${style_file%.*}"
+	
 
 	# 2. First scale value
 	zoom=$4
