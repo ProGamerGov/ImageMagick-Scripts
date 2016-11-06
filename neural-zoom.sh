@@ -19,7 +19,7 @@ main(){
 	style_dir=`dirname $style`
 	style_file=`basename $style`
 	style_name="${style_file%.*}"
-	
+		
 
 	# 4. Zoom value
 	zoom=$4
@@ -39,6 +39,27 @@ heightcrop=`echo $height $zoom | awk '{print $1-$2}'`
 
 
 #convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$num_frames"_"""$clean_name""_zoom_""$zoom""_rotation_degrees_""$rotation_value".png
+
+neural_style $input $style $out_file
+v_frames=0
+
+###############################################
+
+for r in `seq 1 $num_frames`;
+do 
+
+v_frames=`echo $v_frames 1 | awk '{print $1+$2}'`
+
+"$v_frames_""$clean_name".png
+
+convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$v_frames_""$clean_name".png
+out_file="$v_frames_""$clean_name".png
+neural_style $input $style $out_file
+
+done
+
+###############################################
+
 
 convert -rotate $rotation_value -gravity center -crop "$widthcrop"x"$heightcrop"+0+0 $input_file "$num_frames"_"""$clean_name".png
 
