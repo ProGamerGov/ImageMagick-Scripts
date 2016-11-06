@@ -15,7 +15,7 @@ main(){
  convert $input_file
 		\( +clone -fill $color -colorize 100% \) \
 		\( -clone 0 -modulate 100,0,100 -white-threshold ${highthresh}% -level 0x${highthresh}% -evaluate multiply $fact \) \
-		-compose overlay -composite "$outfile"
+		-compose overlay -composite "$clean_name"_white".png
 
 }
 
