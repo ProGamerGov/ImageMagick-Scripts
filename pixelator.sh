@@ -14,6 +14,7 @@ main(){
 	height=`convert $input_file -format "%h" info:`
 
 convert -scale "$scale""%" -scale 1000% -resize "$width"x"$height" $input_file "$clean_name"_"pixelated_""scale_""$scale".png
+#convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
 
 
 }
