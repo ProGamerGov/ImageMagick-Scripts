@@ -13,11 +13,12 @@ main(){
 
 #convert -scale "$scale""%" -scale 1000% $input_file "$clean_name"_"pixelated_""scale_""$scale".png
  
- convert $input_file -alpha on   -virtual-pixel transparent \
-      \( +clone -flip -channel A -evaluate multiply .35 +channel \) -append \
-      +distort Barrel '0,0,0,1  0,0,-.35,1.5  32,32' \
-      -gravity North  -crop 100x100+0-5\! \
-      -background black -compose Over -flatten    "$clean_name"_"relection_arc".png
+convert -quiet "$infile" $dir/tmpI.mpc
+fact=`convert xc: -format "%[fx:$amount/100]" info:`
+convert $dir/tmpI.mpc \
+\( +clone -fill $color -colorize 100% \) \
+\( -clone 0 -modulate 100,0,100 -solarize 50% -level 0x50% -evaluate multiply $fact \) \
+-compose overlay -composite "$outfile"
 
 }
 
